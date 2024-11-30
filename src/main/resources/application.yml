@@ -8,10 +8,17 @@ spring:
   h2:
     console:
       enabled: true
-mybatis:
-  mapper-locations: mapper/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+springdoc:
+  enable-spring-security: false
+
 logging:
   level:
     root: info
