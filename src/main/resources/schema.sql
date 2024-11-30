@@ -1,8 +1,20 @@
-DROP TABLE IF EXISTS Member;
+DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS url_mapping;
 
-create table Member
+CREATE TABLE member
 (
-    id integer not null,
-    name varchar(255) not null,
-    primary key (id)
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name       VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE url_mapping
+(
+    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    original_url       TEXT       NOT NULL,
+    short_url     VARCHAR(8) NOT NULL UNIQUE,
+    request_count BIGINT    DEFAULT 0,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
